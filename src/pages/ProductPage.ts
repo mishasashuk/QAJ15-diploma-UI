@@ -1,5 +1,5 @@
-import { Locator, Page } from "@playwright/test";
-import { BasePage } from "./BasePage";
+import { Locator, Page } from '@playwright/test';
+import { BasePage } from './BasePage';
 
 export class ProductPage extends BasePage {
   readonly productTitle: Locator;
@@ -26,26 +26,24 @@ export class ProductPage extends BasePage {
     super(page);
 
     this.productTitle = page.locator('[data-test="product-name"]');
-    this.productImage = page.locator(".figure-img.img-fluid");
+    this.productImage = page.locator('.figure-img.img-fluid');
     this.productPrice = page.locator('[data-test="unit-price"]');
 
-    this.quantityDecreaseButton = page.locator("#btn-decrease-quantity");
+    this.quantityDecreaseButton = page.locator('#btn-decrease-quantity');
     this.quantityInput = page.locator('[data-test="quantity"]');
-    this.quantityIncreaseButton = page.locator("#btn-increase-quantity");
+    this.quantityIncreaseButton = page.locator('#btn-increase-quantity');
 
-    this.addToCartButton = page.locator("#btn-add-to-cart");
-    this.addToFavouritesButton = page.locator("#btn-add-to-favorites");
+    this.addToCartButton = page.locator('#btn-add-to-cart');
+    this.addToFavouritesButton = page.locator('#btn-add-to-favorites');
 
     this.categoryValue = page.locator('[aria-label="category"]');
     this.brandValue = page.locator('[aria-label="brand"]');
-    this.productDescription = page.locator("#description");
+    this.productDescription = page.locator('#description');
     this.specificationsSection = page.locator('[data-test="specs-title"]');
 
     this.toastMessage = page.locator('[role="alert"]');
     this.alertMessage = page.locator('.alert, [role="alert"]');
-    this.cartBadge = page.locator(
-      '[data-test="cart-quantity"], .cart-quantity',
-    );
+    this.cartBadge = page.locator('[data-test="cart-quantity"], .cart-quantity');
   }
 
   async setQuantity(value: string) {

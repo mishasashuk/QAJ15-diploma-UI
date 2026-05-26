@@ -12,72 +12,64 @@ test.describe('Product Page Test Suite', () => {
     await pages.homePage.openProductByName('Claw Hammer');
   });
 
-  test('product details page should be opened', async ({ page }) => {
+  test('product page opens successfully', async ({ page }) => {
     await expect(page).toHaveURL(/\/product\//);
   });
 
-  test('selected product name should be displayed', async () => {
+  test('product title is visible and correct', async () => {
     await expect(pages.productPage.productTitle).toBeVisible();
     await expect(pages.productPage.productTitle).toHaveText('Claw Hammer');
   });
 
-  test('product image should be available', async () => {
+  test('product image is visible', async () => {
     await expect(pages.productPage.productImage).toBeVisible();
   });
 
-  test('product price should be displayed as valid amount', async () => {
+  test('product price is visible and valid', async () => {
     await expect(pages.productPage.productPrice).toBeVisible();
 
     const priceText = (await pages.productPage.productPrice.textContent())?.trim() ?? '';
-    const priceAmount = Number(priceText.replace(/[^0-9.]/g, ''));
 
-    expect(priceAmount).toBeGreaterThan(0);
+    const priceValue = Number(priceText.replace(/[^0-9.]/g, ''));
+
+    expect(priceValue).toBeGreaterThan(0);
   });
 
-  test('quantity field should contain default value', async () => {
-    await expect(pages.productPage.quantityInput).toHaveValue(
-      quantityData.defaultQuantity
-    );
+  test('quantity input has default value', async () => {
+    await expect(pages.productPage.quantityInput).toHaveValue(quantityData.defaultQuantity);
   });
 
-  test('quantity can be increased by plus button', async () => {
+  test('user can increase quantity', async () => {
     await pages.productPage.increaseQuantity();
 
-    await expect(pages.productPage.quantityInput).toHaveValue(
-      quantityData.increasedQuantity
-    );
+    await expect(pages.productPage.quantityInput).toHaveValue(quantityData.increasedQuantity);
   });
 
-  test('quantity can be decreased after increase', async () => {
+  test('user can decrease quantity after increasing', async () => {
     await pages.productPage.increaseQuantity();
 
-    await expect(pages.productPage.quantityInput).toHaveValue(
-      quantityData.increasedQuantity
-    );
+    await expect(pages.productPage.quantityInput).toHaveValue(quantityData.increasedQuantity);
 
     await pages.productPage.decreaseQuantity();
 
-    await expect(pages.productPage.quantityInput).toHaveValue(
-      quantityData.defaultQuantity
-    );
+    await expect(pages.productPage.quantityInput).toHaveValue(quantityData.defaultQuantity);
   });
 
-  test('add to cart button should be visible and clickable', async () => {
+  test('add to cart button is visible and enabled', async () => {
     await expect(pages.productPage.addToCartButton).toBeVisible();
     await expect(pages.productPage.addToCartButton).toBeEnabled();
   });
 
-  test('specifications block should be shown', async () => {
-    await expect(pages.productPage.specificationsSection).toBeVisible();
+  test('product description is visible', async () => {
+    await expect(pages.productPage.productDescription).toBeVisible();
+    await expect(pages.productPage.productDescription).toHaveText(/\S/);
   });
 
-  test('guest user should see authorization message after adding to favourites', async () => {
+  test('unauthorized user gets error after add to favourites', async () => {
     await pages.productPage.addToFavourites();
 
     await expect(pages.productPage.toastMessage).toBeVisible();
 
-    await expect(pages.productPage.toastMessage).toContainText(
-      'Unauthorized'
-    );
+    await expect(pages.productPage.toastMessage).toContainText('Unauthorized, can not add product to your favorite list.');
   });
 });
