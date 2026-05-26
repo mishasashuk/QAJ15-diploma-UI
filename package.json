@@ -1,0 +1,31 @@
+{
+  "name": "qaj15-diploma-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+     "allure:generate": "npx allure generate ./allure-results --clean",
+    "allure:open": "npx allure open ./allure-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mishasashuk/QAJ15-diploma-UI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mishasashuk/QAJ15-diploma-UI/issues"
+  },
+  "homepage": "https://github.com/mishasashuk/QAJ15-diploma-UI#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1",
+    "allure-commandline": "^2.42.0",
+    "allure-playwright": "^3.9.0",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3"
+  }
+}
