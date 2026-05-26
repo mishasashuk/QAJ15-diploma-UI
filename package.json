@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "home": "npx playwright test test/home.spec.ts",
+    "login": "npx playwright test test/login.spec.ts",
+    "product": "npx playwright test test/product.spec.ts",
+    "format": "prettier . --write",
     "test": "npx playwright test",
-     "allure:generate": "npx allure generate ./allure-results --clean",
+    "allure:generate": "npx allure generate ./allure-results --clean",
     "allure:open": "npx allure open ./allure-report"
   },
   "repository": {
@@ -25,6 +29,7 @@
     "@types/node": "^25.9.1",
     "allure-commandline": "^2.42.0",
     "allure-playwright": "^3.9.0",
+    "prettier": "^3.8.3",
     "tsx": "^4.22.3",
     "typescript": "^6.0.3"
   }

@@ -1,18 +1,16 @@
-import { Page } from '@playwright/test';
-import { HomePage } from '../pages/HomePage';
-import { ProductPage } from '../pages/ProductPage';
-import { LoginPage } from '../pages/LoginPage';
+import { Page } from "@playwright/test";
+import { HomePage } from "../pages/HomePage";
+import { LoginPage } from "../pages/LoginPage";
+import { ProductPage } from "../pages/ProductPage";
 
 export class PageFactory {
-  static homePage(page: Page) {
-    return new HomePage(page);
-  }
+  readonly homePage: HomePage;
+  readonly loginPage: LoginPage;
+  readonly productPage: ProductPage;
 
-  static productPage(page: Page) {
-    return new ProductPage(page);
-  }
-
-  static loginPage(page: Page) {
-    return new LoginPage(page);
+  constructor(page: Page) {
+    this.homePage = new HomePage(page);
+    this.loginPage = new LoginPage(page);
+    this.productPage = new ProductPage(page);
   }
 }
