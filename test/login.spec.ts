@@ -12,7 +12,7 @@ test.describe('Login Page Test Suite', () => {
   });
 
   test.describe('Login Page Layout Test Suite', () => {
-    
+    test('display of all login page main elements', async () => {
       await expect(pages.loginPage.pageTitle).toBeVisible();
       await expect(pages.loginPage.emailField).toBeVisible();
       await expect(pages.loginPage.passwordField).toBeVisible();
