@@ -67,9 +67,7 @@ test.describe('Product Page Test Suite', () => {
 
   test('unauthorized user gets error after add to favourites', async () => {
     await pages.productPage.addToFavourites();
-
     await expect(pages.productPage.toastMessage).toBeVisible();
-
     await expect(pages.productPage.toastMessage).toContainText('Unauthorized, can not add product to your favorite list.');
   });
 });

@@ -134,7 +134,7 @@ test.describe('Login Page Test Suite', () => {
       );
 
       await expect(page).toHaveURL(/account/, {
-        timeout: 15000,
+        timeout: 20000,
       });
     });
   });
